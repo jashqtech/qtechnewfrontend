@@ -176,31 +176,47 @@ export function Navbar() {
 
                   {/* Standard Dropdown */}
                   {isOpen && !item.isMegaMenu && item.items && (
-                    <div className="absolute top-full left-0 pt-2 w-72 animate-in fade-in slide-in-from-top-1 duration-200">
-                      <div className="rounded-2xl border border-slate-200/90 bg-white/95 p-2 shadow-2xl backdrop-blur-xl space-y-1">
-                        {item.items.map((sub) => (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            className="group flex flex-col p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
-                          >
-                            <div className="flex items-center justify-between">
-                              <span className="text-sm font-medium text-slate-900 group-hover:text-[#FF6B00] transition-colors">
-                                {sub.title}
-                              </span>
-                              {sub.badge && (
-                                <Badge size="sm" variant="amber">
-                                  {sub.badge}
-                                </Badge>
+                    <div
+                      className={cn(
+                        "absolute top-full pt-2 animate-in fade-in slide-in-from-top-1 duration-200 z-50",
+                        item.items.length > 5
+                          ? "w-[560px] left-1/2 -translate-x-1/2"
+                          : "w-80 left-0"
+                      )}
+                    >
+                      <div className="rounded-2xl border border-slate-200/90 bg-white/95 p-3 shadow-2xl backdrop-blur-xl">
+                        <div
+                          className={cn(
+                            "gap-1",
+                            item.items.length > 5
+                              ? "grid grid-cols-2"
+                              : "flex flex-col"
+                          )}
+                        >
+                          {item.items.map((sub) => (
+                            <Link
+                              key={sub.title}
+                              href={sub.href}
+                              className="group flex flex-col p-2.5 rounded-xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100"
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm font-semibold text-slate-900 group-hover:text-[#FF6B00] transition-colors">
+                                  {sub.title}
+                                </span>
+                                {sub.badge && (
+                                  <Badge size="sm" variant="amber">
+                                    {sub.badge}
+                                  </Badge>
+                                )}
+                              </div>
+                              {sub.description && (
+                                <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
+                                  {sub.description}
+                                </p>
                               )}
-                            </div>
-                            {sub.description && (
-                              <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">
-                                {sub.description}
-                              </p>
-                            )}
-                          </Link>
-                        ))}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   )}

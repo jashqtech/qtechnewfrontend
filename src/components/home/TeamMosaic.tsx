@@ -11,7 +11,7 @@ const TOTAL_STAFF = 89;
 const TIER1_COUNT = 5;   // large featured portraits
 const TIER2_COUNT = 15;  // medium grid (indices 6-20)
 const TIER3_COUNT = 20;  // small mosaic (indices 21-40)
-// Tier 4: 41-89 (49 headshots)
+// Tier 4: 41-89 (49 headss)
 
 const TIER2_ROTATIONS = [
   "-1deg", "0.5deg", "-0.5deg", "1deg", "0deg",
@@ -121,7 +121,7 @@ export function TeamMosaic() {
                 }}
               >
                 <Image
-                  src={`/images/staff-headshots/${num}.webp`}
+                  src={`/images/staff-headss/${num}.webp`}
                   alt={`Qrious Tech Engineer #${num}`}
                   fill
                   sizes="90px"
@@ -155,7 +155,7 @@ export function TeamMosaic() {
                 }}
               >
                 <Image
-                  src={`/images/staff-headshots/${num}.webp`}
+                  src={`/images/staff-headss/${num}.webp`}
                   alt={`Qrious Tech Engineer #${num}`}
                   fill
                   sizes="70px"
@@ -215,7 +215,7 @@ export function TeamMosaic() {
           )}
         </div>
 
-        {/* ── Culture & Team Life Snapshot Bar (Real Project Photos) ── */}
+        {/* ── Culture & Team Life Snaps Bar (Real Project Pos) ── */}
         <div className="mb-12 rounded-3xl bg-white border border-slate-200/80 p-6 sm:p-8 shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6 pb-4 border-b border-slate-100">
             <div>
