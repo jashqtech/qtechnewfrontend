@@ -2,6 +2,7 @@
 
 @theme {
   --color-canvas: #090A0F;
+  --color-canvas-light: #F8FAFC;
   --color-surface: #11131B;
   --color-surface-raised: #171B26;
   --color-surface-active: #1F2433;
@@ -10,6 +11,9 @@
   --color-border-prominent: rgba(255, 255, 255, 0.18);
   --color-brand-primary: #FF6B00;
   --color-brand-hover: #FF7A1A;
+  --color-brand-coral: #FF5A36;
+  --color-brand-magenta: #D946EF;
+  --color-brand-violet: #6366F1;
   --color-brand-cyan: #06B6D4;
   --color-brand-indigo: #3B82F6;
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
@@ -19,6 +23,7 @@
 
 :root {
   --bg-canvas: #090A0F;
+  --bg-canvas-light: #F8FAFC;
   --bg-surface: #11131B;
   --bg-surface-raised: #171B26;
   --bg-surface-active: #1F2433;
@@ -35,6 +40,7 @@
   --brand-primary: #FF6B00;
   --brand-cyan: #06B6D4;
   --brand-indigo: #3B82F6;
+  --brand-magenta: #D946EF;
 }
 
 /* Base Body Styles */
@@ -47,7 +53,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Subtle Technical Grid Background */
+/* Technical Subtle Grids */
 .bg-tech-grid {
   background-size: 48px 48px;
   background-image: 
@@ -55,7 +61,17 @@ body {
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
-/* Glassmorphic Navbar & Panel */
+.bg-dot-grid {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+}
+
+.bg-dot-grid-light {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.08) 1px, transparent 1px);
+}
+
+/* Glassmorphic Panels */
 .glass-panel {
   background: rgba(17, 19, 27, 0.80);
   backdrop-filter: blur(16px);
@@ -63,14 +79,266 @@ body {
   border: 1px solid var(--border-default);
 }
 
-/* Radial Glow Utilities */
-.radial-glow-amber {
-  background: radial-gradient(circle at 50% 0%, rgba(255, 107, 0, 0.15) 0%, transparent 60%);
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
 }
 
-.radial-glow-cyan {
-  background: radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.12) 0%, transparent 60%);
+/* Stripe-inspired Fluid Mesh Gradient Backgrounds */
+.hero-gradient-mesh {
+  background: 
+    radial-gradient(ellipse 65% 55% at 75% 20%, rgba(255, 107, 0, 0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 85% 55%, rgba(217, 70, 239, 0.20) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 95% 30%, rgba(99, 102, 241, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 45% 40% at 65% 70%, rgba(6, 182, 212, 0.15) 0%, transparent 60%);
 }
+
+.dark-gradient-mesh {
+  background: 
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(255, 107, 0, 0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 60%, rgba(99, 102, 241, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(6, 182, 212, 0.08) 0%, transparent 60%);
+}
+
+/* Floating Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(8px) rotate(-0.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* ============================================================
+   LUMINOUS LIGHT THEME — CSS Variables & Utility Classes
+   Used across the entire homepage. Dark canvas remains default
+   for inner pages; these classes opt individual sections in.
+   ============================================================ */
+
+:root {
+  /* Light background palette */
+  --luminous-warm-white: #FAF9F6;
+  --luminous-ivory:      #F7F5F0;
+  --luminous-lavender:   #F4F0FF;
+  --luminous-peach:      #FFF5F0;
+  --luminous-blue-white: #F0F7FF;
+
+  /* Light-mode text */
+  --light-text-heading:  #0F172A;   /* deep slate */
+  --light-text-body:     #334155;   /* mid slate  */
+  --light-text-caption:  #64748B;   /* soft slate */
+
+  /* Ambient glow at QTech brand colours — 8-15% opacity */
+  --glow-amber:  rgba(255, 107,   0, 0.12);
+  --glow-cyan:   rgba(  6, 182, 212, 0.10);
+  --glow-violet: rgba( 99, 102, 241, 0.10);
+  --glow-magenta:rgba(217,  70, 239, 0.08);
+
+  /* Card surface on light sections */
+  --light-card-bg:     rgba(255, 255, 255, 0.95);
+  --light-card-border: rgba( 15,  23,  42, 0.08);
+  --light-card-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* ---- Section background variants ---- */
+
+/* Warm white → soft ivory */
+.luminous-section {
+  background: linear-gradient(160deg, var(--luminous-warm-white) 0%, var(--luminous-ivory) 100%);
+  color: var(--light-text-body);
+}
+
+/* Very light lavender tint */
+.luminous-section-lavender {
+  background: linear-gradient(160deg, #FDFCFF 0%, var(--luminous-lavender) 100%);
+  color: var(--light-text-body);
+}
+
+/* Subtle pale peach / cream */
+.luminous-section-peach {
+  background: linear-gradient(160deg, #FFFBF8 0%, var(--luminous-peach) 100%);
+  color: var(--light-text-body);
+}
+
+/* Soft blue-tinted white */
+.luminous-section-blue {
+  background: linear-gradient(160deg, #F8FBFF 0%, var(--luminous-blue-white) 100%);
+  color: var(--light-text-body);
+}
+
+/* ---- Multi-stop radial gradient mesh (light version) ---- */
+.luminous-gradient-mesh {
+  background:
+    radial-gradient(ellipse 60% 50% at 15% 25%, rgba(255, 107,   0, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 45% at 85% 20%, rgba( 99, 102, 241, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 55% at 75% 80%, rgba(  6, 182, 212, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 40% at 25% 75%, rgba(217,  70, 239, 0.05) 0%, transparent 55%),
+    linear-gradient(160deg, var(--luminous-warm-white) 0%, var(--luminous-ivory) 100%);
+}
+
+/* ---- White glassmorphic panel with coloured border ---- */
+.light-glass-panel {
+  background: var(--light-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--light-card-border);
+  box-shadow: var(--light-card-shadow);
+}
+
+/* ---- Ambient radial glows ---- */
+.ambient-glow-amber {
+  position: relative;
+}
+.ambient-glow-amber::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(255, 107, 0, 0.13) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow-cyan {
+  position: relative;
+}
+.ambient-glow-cyan::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(6, 182, 212, 0.11) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient-glow-violet {
+  position: relative;
+}
+.ambient-glow-violet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(99, 102, 241, 0.11) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Subtle grain texture overlay ---- */
+.bg-grain-texture {
+  position: relative;
+}
+.bg-grain-texture::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.45;
+}
+
+/* ---- Section gradient transition (blends adjacent sections) ---- */
+.section-gradient-transition {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(250, 249, 246, 0.6) 30%,
+    rgba(247, 245, 240, 0.9) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* ---- Light subtle dot-grid for luminous sections ---- */
+.bg-light-grid {
+  background-size: 28px 28px;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.07) 1px, transparent 1px);
+}
+
+/* ---- Animation Keyframes ---- */
+
+/* Slowly shifts background gradient positions */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%;   }
+  25%  { background-position: 50% 25%;  }
+  50%  { background-position: 100% 50%; }
+  75%  { background-position: 50% 75%;  }
+  100% { background-position: 0% 50%;   }
+}
+
+/* Animated gradient ribbon flow */
+@keyframes ribbonFlow {
+  0%   { transform: translateX(-100%) skewX(-12deg); opacity: 0;    }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(200%)  skewX(-12deg); opacity: 0;    }
+}
+
+/* Subtle shimmer on glass surfaces */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+.animate-gradient-shift {
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease-in-out infinite;
+}
+
+.animate-ribbon-flow {
+  animation: ribbonFlow 3.5s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.4s linear infinite;
+}
+
+/* ============================================================
+   END LUMINOUS LIGHT THEME
+   ============================================================ */
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import {
   HeartPulse,
@@ -17,15 +17,28 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
+interface Industry {
+  id: string;
+  title: string;
+  icon: React.ReactNode;
+  tagline: string;
+  description: string;
+  compliance: string;
+  impact: string;
+  features: string[];
+  href: string;
+  accent: string;
+  large?: boolean;
+}
+
 export function IndustriesShowcase() {
-  const industries = [
+  const industries: Industry[] = [
     {
       id: "healthcare",
       title: "Healthcare",
-      icon: <HeartPulse className="h-5 w-5" />,
+      icon: <HeartPulse className="h-6 w-6" />,
       tagline: "HIPAA-Compliant Medical Software & Telemedicine",
       description:
         "Streamlining clinical workflows, EHR/EMR patient record systems, intelligent diagnostics, and secure doctor-patient teleconsultation platforms.",
@@ -39,11 +52,12 @@ export function IndustriesShowcase() {
       ],
       href: "/industries/healthcare",
       accent: "#FF6B00",
+      large: true,
     },
     {
       id: "finance",
       title: "FinTech & Banking",
-      icon: <Landmark className="h-5 w-5" />,
+      icon: <Landmark className="h-6 w-6" />,
       tagline: "High-Security Payment Rails & Digital Banking Portals",
       description:
         "Engineering PCI-DSS compliant financial platforms, automated payment gateways, fraud detection algorithms, and real-time ledger synchronization.",
@@ -57,6 +71,7 @@ export function IndustriesShowcase() {
       ],
       href: "/industries/finance",
       accent: "#06B6D4",
+      large: true,
     },
     {
       id: "education",
@@ -64,14 +79,13 @@ export function IndustriesShowcase() {
       icon: <GraduationCap className="h-5 w-5" />,
       tagline: "Interactive LMS & Virtual Learning Platforms",
       description:
-        "Building engaging student learning management systems, video classrooms, automated grading pipelines, and gamified educational experiences.",
+        "Building engaging student learning management systems, video classrooms, and gamified educational experiences.",
       compliance: "FERPA & COPPA Compliant",
       impact: "250,000+ active students supported",
       features: [
         "Gamified Curriculum Engines",
         "Automated Assessment Evaluation",
         "Interactive Classroom Video Streams",
-        "Institutional Progress Analytics",
       ],
       href: "/industries/education",
       accent: "#3B82F6",
@@ -82,14 +96,13 @@ export function IndustriesShowcase() {
       icon: <ShoppingBag className="h-5 w-5" />,
       tagline: "Omnichannel Commerce & Real-Time Logistics",
       description:
-        "Architecting unified retail experiences, real-time multi-warehouse inventory synchronization, custom POS interfaces, and high-conversion checkouts.",
+        "Architecting unified retail experiences, real-time multi-warehouse inventory synchronization, and high-conversion checkouts.",
       compliance: "Sub-Second Cart Synchronization",
-      impact: "+35% uplift in checkout conversion velocity",
+      impact: "+35% checkout conversion uplift",
       features: [
         "Headless Commerce Microservices",
         "Real-Time Multi-Store POS Integration",
         "AI Recommendation & Upsell Matrix",
-        "Automated Inventory Reorder Workflows",
       ],
       href: "/industries/retail",
       accent: "#10B981",
@@ -100,14 +113,13 @@ export function IndustriesShowcase() {
       icon: <Trophy className="h-5 w-5" />,
       tagline: "Athlete Telemetry & Live Event Streaming",
       description:
-        "Delivering real-time athlete biometrics telemetry, live match score broadcast engines, stadium fan engagement, and fantasy league portals.",
+        "Delivering real-time athlete biometrics telemetry, live match score broadcast engines, and fan engagement apps.",
       compliance: "<50ms Real-Time WebSocket Latency",
       impact: "12,000+ concurrent broadcast listeners",
       features: [
         "Live Sensor Telemetry Processing",
         "Low-Latency Game Match Feeds",
         "Athlete Performance Diagnostics",
-        "Fan Interaction & Community Apps",
       ],
       href: "/industries/sports",
       accent: "#8B5CF6",
@@ -118,32 +130,30 @@ export function IndustriesShowcase() {
       icon: <Film className="h-5 w-5" />,
       tagline: "High-Concurrency Video Streaming & DRM Security",
       description:
-        "Developing scalable video-on-demand architectures, digital rights management (DRM), social interactive feeds, and live ticketing platforms.",
+        "Developing scalable video-on-demand architectures, digital rights management, and live ticketing platforms.",
       compliance: "Global CDN Edge Distribution",
       impact: "Zero buffering across 1080p/4K streams",
       features: [
         "Multi-Bitrate Adaptive Streaming",
         "Widevine & FairPlay DRM Protection",
         "High-Concurrency Ticketing Engine",
-        "Real-Time Audience Chat Feeds",
       ],
       href: "/industries/entertainment",
       accent: "#EC4899",
     },
     {
       id: "hcm",
-      title: "Human Capital Management",
+      title: "Human Capital Mgmt",
       icon: <Users2 className="h-5 w-5" />,
       tagline: "Enterprise HRMS & Payroll Automation",
       description:
-        "Automating employee lifecycle tracking, multi-country tax and payroll processing, performance appraisal cycles, and attendance workflows.",
+        "Automating employee lifecycle tracking, multi-country tax and payroll processing, and attendance workflows.",
       compliance: "ISO 27001 & Data Encryption Standard",
       impact: "90% reduction in manual HR payroll effort",
       features: [
         "Multi-Tier Payroll & Tax Calculation",
         "Automated Shift Scheduling Engine",
         "Self-Service Employee Portals",
-        "Talent Sourcing & Applicant Pipeline",
       ],
       href: "/industries/hcm",
       accent: "#F59E0B",
@@ -154,131 +164,231 @@ export function IndustriesShowcase() {
       icon: <Navigation className="h-5 w-5" />,
       tagline: "Dynamic Geolocation Dispatch & Marketplaces",
       description:
-        "Engineering driver dispatch algorithms, real-time GPS fleet telemetry, multi-sided marketplace billing, and route optimization.",
+        "Engineering driver dispatch algorithms, real-time GPS fleet telemetry, and route optimization for multi-sided marketplaces.",
       compliance: "Real-Time Fleet Routing Engines",
       impact: "18% faster delivery dispatch velocity",
       features: [
         "Algorithmic Driver Matching",
         "Live Telemetry Map Geofencing",
         "Automated Fare Calculation & Splits",
-        "Multi-Sided Rating & Dispute Systems",
       ],
       href: "/industries/on-demand",
       accent: "#14B8A6",
     },
   ];
 
-  const [activeTab, setActiveTab] = useState(industries[0].id);
-  const currentIndustry = industries.find((i) => i.id === activeTab) || industries[0];
+  const largeIndustries = industries.filter((i) => i.large);
+  const smallIndustries = industries.filter((i) => !i.large);
 
   return (
-    <section className="relative py-24 sm:py-32 border-t border-white/10 bg-[#090A0F]">
+    <section className="relative py-24 sm:py-32 overflow-hidden" style={{ background: "linear-gradient(180deg, #F0F7FF 0%, #FAFCFF 50%, #FFFFFF 100%)" }}>
+      {/* Ambient background glows */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: "radial-gradient(circle, #BAE6FD 0%, transparent 70%)" }} />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-20" style={{ background: "radial-gradient(circle, #DDD6FE 0%, transparent 70%)" }} />
+      </div>
+
       <Container size="lg">
         {/* Section Header */}
-        <div className="space-y-4 max-w-3xl mb-12">
-          <Badge variant="amber" size="sm">
-            Industry-Tailored Excellence
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC] font-display tracking-tight">
-            To Whom We Provide Solutions
+        <div className="text-center space-y-5 max-w-3xl mx-auto mb-16">
+          {/* <Badge variant="amber" size="sm">Industry-Tailored Excellence</Badge> */}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display tracking-tight" style={{ color: "#0F172A" }}>
+            Built for the Industries<br />
+            <span style={{ color: "#FF6B00" }}>That Matter</span>
           </h2>
-          <p className="text-base text-[#94A3B8]">
-            At Qrious Tech Team LLP, our specialized engineering squads cater to diverse industries, empowering organizations to thrive with domain-specific compliance and technological rigor.
+          <p className="text-base sm:text-lg leading-relaxed" style={{ color: "#334155" }}>
+            Our specialized engineering squads cater to diverse industries, empowering organizations to thrive with domain-specific compliance and technological rigor.
           </p>
         </div>
 
-        {/* Tab Buttons (Horizontal Scroll on Mobile) */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 no-scrollbar border-b border-white/10">
-          {industries.map((ind) => {
-            const isActive = ind.id === activeTab;
-            return (
-              <button
-                key={ind.id}
-                onClick={() => setActiveTab(ind.id)}
-                className={cn(
-                  "flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all shrink-0 cursor-pointer",
-                  isActive
-                    ? "bg-[#171B26] text-[#F8FAFC] border border-white/20 shadow-sm"
-                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-white/[0.04]"
-                )}
-              >
-                <span className={cn(isActive ? "text-[#FF6B00]" : "opacity-60")}>
-                  {ind.icon}
-                </span>
-                <span>{ind.title}</span>
-              </button>
-            );
-          })}
-        </div>
+        {/* Bento/Mosaic Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
 
-        {/* Active Industry Showcase Panel */}
-        <div className="mt-8 rounded-2xl border border-white/10 bg-[#11131B] p-8 lg:p-12 relative overflow-hidden">
-          {/* Subtle Accent Glow */}
-          <div
-            className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl opacity-20 pointer-events-none"
-            style={{ backgroundColor: currentIndustry.accent }}
-          />
+          {/* LEFT: 2 Large Featured Cards */}
+          <div className="lg:col-span-5 flex flex-col gap-5">
+            {largeIndustries.map((industry) => (
+              <LargeIndustryCard key={industry.id} industry={industry} />
+            ))}
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-            {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <div className="space-y-2">
-                <span className="text-xs font-mono font-semibold text-[#FF6B00] uppercase tracking-wider">
-                  {currentIndustry.title} Domain Focus
-                </span>
-                <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] font-display">
-                  {currentIndustry.tagline}
-                </h3>
-              </div>
-
-              <p className="text-base text-[#94A3B8] leading-relaxed">
-                {currentIndustry.description}
-              </p>
-
-              {/* Compliance & Impact Tags */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 flex items-center gap-2.5 text-xs text-[#F8FAFC]">
-                  <ShieldCheck className="h-4 w-4 text-[#10B981] shrink-0" />
-                  <span>{currentIndustry.compliance}</span>
-                </div>
-                <div className="p-3 rounded-lg bg-white/[0.03] border border-white/5 flex items-center gap-2.5 text-xs text-[#F8FAFC]">
-                  <Zap className="h-4 w-4 text-[#FF6B00] shrink-0" />
-                  <span>{currentIndustry.impact}</span>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <Button
-                  href={currentIndustry.href}
-                  variant="primary"
-                  size="md"
-                  rightIcon={<ArrowRight className="h-4 w-4" />}
-                >
-                  Explore {currentIndustry.title} Solutions
-                </Button>
-              </div>
-            </div>
-
-            {/* Right Capability Matrix Box */}
-            <div className="lg:col-span-5 rounded-xl border border-white/10 bg-[#171B26] p-6 space-y-4">
-              <h4 className="text-xs font-mono font-semibold uppercase text-[#94A3B8] tracking-wider">
-                Key Technical Modules
-              </h4>
-              <ul className="space-y-3">
-                {currentIndustry.features.map((feat) => (
-                  <li
-                    key={feat}
-                    className="flex items-center gap-3 text-sm text-[#F8FAFC] p-2.5 rounded-lg bg-white/[0.02] border border-white/5"
-                  >
-                    <span className="h-2 w-2 rounded-full bg-[#FF6B00] shrink-0" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* RIGHT: 2x2 Grid of Smaller Cards */}
+          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {smallIndustries.map((industry) => (
+              <SmallIndustryCard key={industry.id} industry={industry} />
+            ))}
           </div>
         </div>
       </Container>
     </section>
+  );
+}
+
+function LargeIndustryCard({ industry }: { industry: Industry }) {
+  return (
+    <Link
+      href={industry.href}
+      className="group flex flex-col flex-1 rounded-2xl p-6 sm:p-7 relative overflow-hidden transition-all duration-300 cursor-pointer"
+      style={{
+        background: "rgba(255,255,255,0.97)",
+        border: `1.5px solid rgba(15,23,42,0.08)`,
+        borderLeftWidth: "4px",
+        borderLeftColor: industry.accent,
+        boxShadow: "0 4px 24px rgba(0,0,0,0.07)",
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = "translateY(-4px)";
+        el.style.boxShadow = `0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px ${industry.accent}22`;
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = "translateY(0)";
+        el.style.boxShadow = "0 4px 24px rgba(0,0,0,0.07)";
+      }}
+    >
+      {/* Ambient glow on hover */}
+      <div
+        className="absolute top-0 right-0 w-56 h-56 rounded-full blur-3xl opacity-0 group-hover:opacity-15 transition-opacity duration-500 pointer-events-none"
+        style={{ background: industry.accent }}
+      />
+
+      <div className="relative z-10 flex flex-col h-full space-y-4">
+        {/* Icon + Title Row */}
+        <div className="flex items-start gap-3">
+          <div
+            className="p-2.5 rounded-xl shrink-0 transition-transform duration-300 group-hover:scale-110"
+            style={{ background: `${industry.accent}15`, color: industry.accent }}
+          >
+            {industry.icon}
+          </div>
+          <div>
+            <h3 className="text-lg font-bold leading-tight" style={{ color: "#0F172A" }}>
+              {industry.title}
+            </h3>
+            <p className="text-xs mt-0.5 font-medium" style={{ color: "#64748B" }}>
+              {industry.tagline}
+            </p>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-sm leading-relaxed" style={{ color: "#334155" }}>
+          {industry.description}
+        </p>
+
+        {/* Feature Chips */}
+        <div className="flex flex-wrap gap-2">
+          {industry.features.map((feat) => (
+            <span
+              key={feat}
+              className="px-2.5 py-1 rounded-full text-xs font-medium"
+              style={{ background: `${industry.accent}12`, color: industry.accent }}
+            >
+              {feat}
+            </span>
+          ))}
+        </div>
+
+        {/* Compliance Badge */}
+        <div className="flex items-center gap-2 text-xs" style={{ color: "#334155" }}>
+          <ShieldCheck className="h-3.5 w-3.5 shrink-0" style={{ color: "#10B981" }} />
+          <span>{industry.compliance}</span>
+        </div>
+
+        {/* Impact Metric + Link Row */}
+        <div className="flex items-center justify-between pt-3 border-t mt-auto" style={{ borderColor: "rgba(15,23,42,0.07)" }}>
+          <div className="flex items-center gap-1.5">
+            <Zap className="h-3.5 w-3.5 shrink-0" style={{ color: "#FF6B00" }} />
+            <span className="text-xs font-semibold" style={{ color: "#92400E" }}>
+              {industry.impact}
+            </span>
+          </div>
+          <span
+            className="text-xs font-semibold flex items-center gap-1 group-hover:gap-2 transition-all"
+            style={{ color: industry.accent }}
+          >
+            Explore <ArrowRight className="h-3.5 w-3.5" />
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function SmallIndustryCard({ industry }: { industry: Industry }) {
+  return (
+    <Link
+      href={industry.href}
+      className="group flex flex-col rounded-2xl p-5 relative overflow-hidden transition-all duration-300 cursor-pointer"
+      style={{
+        background: "rgba(255,255,255,0.97)",
+        border: "1.5px solid rgba(15,23,42,0.08)",
+        borderLeftWidth: "3px",
+        borderLeftColor: industry.accent,
+        boxShadow: "0 2px 16px rgba(0,0,0,0.06)",
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = "translateY(-4px)";
+        el.style.boxShadow = `0 10px 32px rgba(0,0,0,0.11), 0 0 0 1px ${industry.accent}22`;
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement;
+        el.style.transform = "translateY(0)";
+        el.style.boxShadow = "0 2px 16px rgba(0,0,0,0.06)";
+      }}
+    >
+      {/* Ambient glow */}
+      <div
+        className="absolute top-0 right-0 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500 pointer-events-none"
+        style={{ background: industry.accent }}
+      />
+
+      <div className="relative z-10 flex flex-col h-full space-y-3">
+        {/* Icon + Name */}
+        <div className="flex items-center gap-2.5">
+          <div
+            className="p-2 rounded-lg shrink-0 transition-transform duration-300 group-hover:scale-110"
+            style={{ background: `${industry.accent}15`, color: industry.accent }}
+          >
+            {industry.icon}
+          </div>
+          <div>
+            <h3 className="text-sm font-bold" style={{ color: "#0F172A" }}>
+              {industry.title}
+            </h3>
+            <p className="text-[11px] leading-tight" style={{ color: "#64748B" }}>
+              {industry.tagline}
+            </p>
+          </div>
+        </div>
+
+        {/* Feature Chips */}
+        <div className="flex flex-wrap gap-1.5">
+          {industry.features.slice(0, 3).map((feat) => (
+            <span
+              key={feat}
+              className="px-2 py-0.5 rounded-full text-[10px] font-medium"
+              style={{ background: `${industry.accent}12`, color: industry.accent }}
+            >
+              {feat}
+            </span>
+          ))}
+        </div>
+
+        {/* Impact metric + link */}
+        <div className="flex items-center justify-between pt-2 border-t mt-auto" style={{ borderColor: "rgba(15,23,42,0.07)" }}>
+          <span className="text-[11px] font-semibold" style={{ color: "#92400E" }}>
+            {industry.impact}
+          </span>
+          <span
+            className="text-[11px] font-semibold flex items-center gap-1 group-hover:gap-1.5 transition-all"
+            style={{ color: industry.accent }}
+          >
+            Explore <ArrowRight className="h-3 w-3" />
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }

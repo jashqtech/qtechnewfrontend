@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Code, Cpu, Smartphone, BarChart3, Cloud } from "lucide-react";
+import { ArrowRight, Code, Cpu, Smartphone, BarChart3, Cloud, Layers } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { cn } from "@/lib/utils";
@@ -100,17 +100,22 @@ export function TechPracticeExplorer() {
   const activePractice = practices.find((p) => p.id === activePracticeId) || practices[0];
 
   return (
-    <section className="relative py-24 sm:py-32 border-t border-white/10 bg-[#090A0F]/60">
-      <Container size="lg">
+    <section className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#F0F7FF] border-b border-slate-200/80">
+      {/* Ambient background glows */}
+      <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-gradient-to-bl from-[#06B6D4]/10 via-[#6366F1]/5 to-transparent blur-[85px] pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[450px] h-[300px] bg-gradient-to-tr from-[#FF6B00]/8 to-transparent blur-[75px] pointer-events-none" />
+
+      <Container size="lg" className="relative z-10">
         {/* Section Header */}
         <div className="space-y-4 max-w-3xl mb-12">
-          <Badge variant="cyan" size="sm">
-            Technologies @ Qtech
-          </Badge>
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#F8FAFC] font-display tracking-tight">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-xs font-mono font-semibold text-[#06B6D4]">
+            <Layers className="h-3.5 w-3.5" />
+            <span>Technologies @ QTech</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 font-display tracking-tight">
             Enterprise Technology Stacks
           </h2>
-          <p className="text-base text-[#94A3B8]">
+          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
             Explore the specialized programming languages, frameworks, and cloud systems our senior engineers leverage across production deployments.
           </p>
         </div>
@@ -126,11 +131,11 @@ export function TechPracticeExplorer() {
                 className={cn(
                   "flex items-center gap-2 p-3.5 rounded-xl border text-left transition-all cursor-pointer",
                   isSelected
-                    ? "bg-[#171B26] border-[#FF6B00]/40 text-[#F8FAFC] shadow-md shadow-[#FF6B00]/5"
-                    : "bg-[#11131B] border-white/5 text-[#94A3B8] hover:border-white/15 hover:text-[#F8FAFC]"
+                    ? "bg-slate-900 border-slate-900 text-white shadow-md"
+                    : "bg-white border-slate-200/80 text-slate-700 hover:border-slate-300 hover:bg-slate-50 shadow-sm"
                 )}
               >
-                <span className={cn(isSelected ? "text-[#FF6B00]" : "opacity-60")}>
+                <span className={cn(isSelected ? "text-[#FF6B00]" : "text-slate-400")}>
                   {p.icon}
                 </span>
                 <span className="text-xs font-semibold">{p.title}</span>
@@ -140,13 +145,13 @@ export function TechPracticeExplorer() {
         </div>
 
         {/* Active Technology Grid Card */}
-        <div className="rounded-2xl border border-white/10 bg-[#11131B] p-8 sm:p-10">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 mb-8 border-b border-white/10">
+        <div className="rounded-3xl border border-slate-200/80 bg-white/95 p-8 sm:p-10 shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 mb-8 border-b border-slate-100">
             <div>
-              <h3 className="text-2xl font-bold text-[#F8FAFC] font-display">
+              <h3 className="text-2xl font-bold text-slate-900 font-display">
                 {activePractice.title}
               </h3>
-              <p className="text-sm text-[#94A3B8] mt-1">
+              <p className="text-sm text-slate-600 mt-1">
                 {activePractice.description}
               </p>
             </div>
@@ -162,12 +167,12 @@ export function TechPracticeExplorer() {
             {activePractice.technologies.map((tech) => (
               <div
                 key={tech.name}
-                className="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-white/15 hover:bg-white/[0.04] transition-all"
+                className="p-4 rounded-xl border border-slate-200/70 bg-slate-50/70 hover:border-slate-300 hover:bg-white transition-all shadow-sm"
               >
-                <span className="text-[10px] font-mono uppercase tracking-wider text-[#64748B] block">
+                <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
                   {tech.category}
                 </span>
-                <span className="text-sm font-bold text-[#F8FAFC] mt-1 block">
+                <span className="text-sm font-bold text-slate-900 mt-1 block">
                   {tech.name}
                 </span>
               </div>

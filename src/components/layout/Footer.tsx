@@ -6,28 +6,30 @@ import {
   Mail,
   MapPin,
   ArrowRight,
+  Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import { COMPANY_COORDINATES } from "@/data/navigation";
 import { Button } from "@/components/ui/Button";
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#090A0F] text-[#94A3B8] relative overflow-hidden">
+    <footer className="border-t border-slate-200/90 bg-[#FAF9F6] text-slate-600 relative overflow-hidden">
       {/* Subtle Top Radial Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#FF6B00]/5 to-transparent pointer-events-none blur-3xl" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#FF6B00]/8 to-transparent pointer-events-none blur-3xl" />
 
       {/* Top Pre-Footer Callout */}
-      <div className="border-b border-white/10 relative z-10">
+      <div className="border-b border-slate-200/80 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-          <div className="rounded-2xl border border-white/10 bg-[#11131B] p-8 sm:p-12 relative overflow-hidden flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div className="rounded-3xl border border-slate-200/90 bg-white p-8 sm:p-12 relative overflow-hidden flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 shadow-[0_4px_24px_rgba(0,0,0,0.03)]">
             <div className="space-y-3 max-w-2xl">
               <span className="text-xs font-semibold tracking-wider uppercase text-[#FF6B00] font-mono">
                 Transform Your Digital Operations
               </span>
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight font-display">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight font-display">
                 Ready to architect your enterprise AI or custom software platform?
               </h3>
-              <p className="text-sm text-[#94A3B8]">
+              <p className="text-sm text-slate-600 leading-relaxed">
                 Consult directly with our principal engineers. We scope technical requirements, validate architectures, and deploy dedicated teams within 2 weeks.
               </p>
             </div>
@@ -35,7 +37,7 @@ export function Footer() {
               <Button href="/contact" size="lg" variant="primary" rightIcon={<ArrowRight className="h-4 w-4" />}>
                 Schedule Consultation
               </Button>
-              <Button href="/case-studies" size="lg" variant="outline">
+              <Button href="/case-studies" size="lg" variant="outline" className="border-slate-300 text-slate-800 hover:bg-slate-50">
                 Explore Case Studies
               </Button>
             </div>
@@ -58,20 +60,20 @@ export function Footer() {
                 />
               </div>
             </Link>
-            <p className="text-sm text-[#94A3B8] leading-relaxed max-w-sm">
+            <p className="text-sm text-slate-600 leading-relaxed max-w-sm">
               Qrious Tech (Qrioustech Team LLP) delivers enterprise AI engineering, intelligent workflow automation, and custom digital product development to high-growth organizations worldwide.
             </p>
 
-            <div className="space-y-3 text-xs text-[#94A3B8]">
+            <div className="space-y-3 text-xs text-slate-600 font-mono">
               <div className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 text-[#FF6B00] shrink-0 mt-0.5" />
-                <span>{COMPANY_COORDINATES.address}</span>
+                <span className="font-sans text-xs">{COMPANY_COORDINATES.address}</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 text-[#FF6B00] shrink-0" />
                 <a
                   href={`tel:${COMPANY_COORDINATES.phone.replace(/\s+/g, "")}`}
-                  className="hover:text-[#F8FAFC] transition-colors"
+                  className="hover:text-[#FF6B00] transition-colors font-semibold text-slate-800"
                 >
                   {COMPANY_COORDINATES.phone}
                 </a>
@@ -80,7 +82,7 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-[#FF6B00] shrink-0" />
                 <a
                   href={`mailto:${COMPANY_COORDINATES.salesEmail}`}
-                  className="hover:text-[#F8FAFC] transition-colors"
+                  className="hover:text-[#FF6B00] transition-colors font-semibold text-slate-800"
                 >
                   Sales: {COMPANY_COORDINATES.salesEmail}
                 </a>
@@ -89,9 +91,9 @@ export function Footer() {
                 <Mail className="h-4 w-4 text-[#06B6D4] shrink-0" />
                 <a
                   href={`mailto:${COMPANY_COORDINATES.talentEmail}`}
-                  className="hover:text-[#F8FAFC] transition-colors"
+                  className="hover:text-[#06B6D4] transition-colors font-semibold text-slate-800"
                 >
-                  Talent & Careers: {COMPANY_COORDINATES.talentEmail}
+                  Talent: {COMPANY_COORDINATES.talentEmail}
                 </a>
               </div>
             </div>
@@ -102,7 +104,7 @@ export function Footer() {
                 href={COMPANY_COORDINATES.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] hover:text-[#F8FAFC] transition-colors"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#FF6B00] hover:border-[#FF6B00]/40 shadow-sm transition-all"
                 aria-label="LinkedIn"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -113,7 +115,7 @@ export function Footer() {
                 href={COMPANY_COORDINATES.socials.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] hover:text-[#F8FAFC] transition-colors"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#FF6B00] hover:border-[#FF6B00]/40 shadow-sm transition-all"
                 aria-label="Twitter / X"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -124,7 +126,7 @@ export function Footer() {
                 href={COMPANY_COORDINATES.socials.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] hover:text-[#F8FAFC] transition-colors"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#FF6B00] hover:border-[#FF6B00]/40 shadow-sm transition-all"
                 aria-label="Instagram"
               >
                 <svg className="h-4 w-4 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -137,7 +139,7 @@ export function Footer() {
                 href={COMPANY_COORDINATES.socials.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.08] hover:text-[#F8FAFC] transition-colors"
+                className="p-2.5 rounded-xl bg-white border border-slate-200 text-slate-700 hover:text-[#FF6B00] hover:border-[#FF6B00]/40 shadow-sm transition-all"
                 aria-label="Facebook"
               >
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
@@ -149,42 +151,42 @@ export function Footer() {
 
           {/* Column 2: Capabilities */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-[#F8FAFC] tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-semibold text-slate-900 tracking-wider uppercase font-mono">
               Capabilities
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/services/ai-ml-development" className="hover:text-[#F8FAFC] transition-colors">
-                  AI & Machine Learning
+                <Link href="/services/ai-ml-development" className="hover:text-[#FF6B00] transition-colors">
+                  AI &amp; Machine Learning
                 </Link>
               </li>
               <li>
-                <Link href="/services/web-development" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/services/web-development" className="hover:text-[#FF6B00] transition-colors">
                   Web Engineering (React/Next/Node)
                 </Link>
               </li>
               <li>
-                <Link href="/services/mobile-development" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/services/mobile-development" className="hover:text-[#FF6B00] transition-colors">
                   Mobile Apps (React Native/Flutter)
                 </Link>
               </li>
               <li>
-                <Link href="/services/data-visualization" className="hover:text-[#F8FAFC] transition-colors">
-                  Data Analytics & Power BI
+                <Link href="/services/data-visualization" className="hover:text-[#FF6B00] transition-colors">
+                  Data Analytics &amp; Power BI
                 </Link>
               </li>
               <li>
-                <Link href="/services/salesforce-development" className="hover:text-[#F8FAFC] transition-colors">
-                  Salesforce & Cloud CRM
+                <Link href="/services/salesforce-development" className="hover:text-[#FF6B00] transition-colors">
+                  Salesforce &amp; Cloud CRM
                 </Link>
               </li>
               <li>
-                <Link href="/services/ui-ux-design" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/services/ui-ux-design" className="hover:text-[#FF6B00] transition-colors">
                   UI/UX Design Systems
                 </Link>
               </li>
               <li>
-                <Link href="/services/product-development" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/services/product-development" className="hover:text-[#FF6B00] transition-colors">
                   Agile Product Engineering
                 </Link>
               </li>
@@ -193,47 +195,47 @@ export function Footer() {
 
           {/* Column 3: Industries */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-[#F8FAFC] tracking-wider uppercase font-mono">
+            <h4 className="text-xs font-semibold text-slate-900 tracking-wider uppercase font-mono">
               Industries
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/industries/healthcare" className="hover:text-[#F8FAFC] transition-colors">
-                  Healthcare & Life Sciences
+                <Link href="/industries/healthcare" className="hover:text-[#FF6B00] transition-colors">
+                  Healthcare &amp; Life Sciences
                 </Link>
               </li>
               <li>
-                <Link href="/industries/finance" className="hover:text-[#F8FAFC] transition-colors">
-                  Financial Services & FinTech
+                <Link href="/industries/finance" className="hover:text-[#FF6B00] transition-colors">
+                  Financial Services &amp; FinTech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/education" className="hover:text-[#F8FAFC] transition-colors">
-                  Education & EdTech
+                <Link href="/industries/education" className="hover:text-[#FF6B00] transition-colors">
+                  Education &amp; EdTech
                 </Link>
               </li>
               <li>
-                <Link href="/industries/retail" className="hover:text-[#F8FAFC] transition-colors">
-                  Retail & E-Commerce
+                <Link href="/industries/retail" className="hover:text-[#FF6B00] transition-colors">
+                  Retail &amp; E-Commerce
                 </Link>
               </li>
               <li>
-                <Link href="/industries/sports" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/industries/sports" className="hover:text-[#FF6B00] transition-colors">
                   Sports Analytics
                 </Link>
               </li>
               <li>
-                <Link href="/industries/entertainment" className="hover:text-[#F8FAFC] transition-colors">
-                  Media & Entertainment
+                <Link href="/industries/entertainment" className="hover:text-[#FF6B00] transition-colors">
+                  Media &amp; Entertainment
                 </Link>
               </li>
               <li>
-                <Link href="/industries/hcm" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/industries/hcm" className="hover:text-[#FF6B00] transition-colors">
                   Human Capital Management
                 </Link>
               </li>
               <li>
-                <Link href="/industries/on-demand" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/industries/on-demand" className="hover:text-[#FF6B00] transition-colors">
                   On-Demand Marketplaces
                 </Link>
               </li>
@@ -242,52 +244,52 @@ export function Footer() {
 
           {/* Column 4: Engagement & Company */}
           <div className="space-y-4">
-            <h4 className="text-sm font-semibold text-[#F8FAFC] tracking-wider uppercase font-mono">
-              Engagement & Company
+            <h4 className="text-xs font-semibold text-slate-900 tracking-wider uppercase font-mono">
+              Engagement &amp; Company
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
-                <Link href="/how-we-work" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/how-we-work" className="hover:text-[#FF6B00] transition-colors">
                   How We Work
                 </Link>
               </li>
               <li>
-                <Link href="/how-we-work/dedicated-teams" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/how-we-work/dedicated-teams" className="hover:text-[#FF6B00] transition-colors">
                   Dedicated Development Teams
                 </Link>
               </li>
               <li>
-                <Link href="/how-we-work/saas-partner" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/how-we-work/saas-partner" className="hover:text-[#FF6B00] transition-colors">
                   SaaS Development Partner
                 </Link>
               </li>
               <li>
-                <Link href="/how-we-work/ai-modernization" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/how-we-work/ai-modernization" className="hover:text-[#FF6B00] transition-colors">
                   AI Modernization Partner
                 </Link>
               </li>
               <li>
-                <Link href="/working-methodology" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/working-methodology" className="hover:text-[#FF6B00] transition-colors">
                   Working Methodology
                 </Link>
               </li>
               <li>
-                <Link href="/crew" className="hover:text-[#F8FAFC] transition-colors">
-                  Join The Crew <span className="text-[#FF6B00] font-medium">(Hiring)</span>
+                <Link href="/crew" className="hover:text-[#FF6B00] transition-colors">
+                  Join The Crew <span className="text-[#FF6B00] font-medium font-mono">(Hiring)</span>
                 </Link>
               </li>
               <li>
-                <Link href="/life-at-qtech" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/life-at-qtech" className="hover:text-[#FF6B00] transition-colors">
                   Life @ QTech
                 </Link>
               </li>
               <li>
-                <Link href="/products/qt-kids" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/products/qt-kids" className="hover:text-[#FF6B00] transition-colors">
                   QT Kids Educational Suite
                 </Link>
               </li>
               <li>
-                <Link href="/faqs" className="hover:text-[#F8FAFC] transition-colors">
+                <Link href="/faqs" className="hover:text-[#FF6B00] transition-colors">
                   Frequently Asked Questions
                 </Link>
               </li>
@@ -296,16 +298,16 @@ export function Footer() {
         </div>
 
         {/* Bottom Strip */}
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748B]">
+        <div className="mt-12 pt-8 border-t border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© 2026 Qrioustech Team LLP. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-[#F8FAFC] transition-colors">
+            <Link href="/privacy" className="hover:text-slate-900 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/llms.txt" className="hover:text-[#F8FAFC] transition-colors">
+            <Link href="/llms.txt" className="hover:text-slate-900 transition-colors">
               AI Index (llms.txt)
             </Link>
-            <Link href="/contact" className="hover:text-[#F8FAFC] transition-colors">
+            <Link href="/contact" className="hover:text-slate-900 transition-colors">
               Contact
             </Link>
           </div>
