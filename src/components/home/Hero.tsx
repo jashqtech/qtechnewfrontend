@@ -130,7 +130,7 @@ export function Hero() {
                   <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#FF6B00]/10 text-[#FF6B00] group-hover:bg-[#FF6B00] group-hover:text-white transition-colors duration-200">
                     <Play className="w-4 h-4 fill-current ml-0.5" />
                   </span>
-                  <span>Watch Now</span>
+                  <span>Meet The Qrious Tech Team</span>
                 </button>
               </div>
 
