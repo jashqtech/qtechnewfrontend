@@ -1,47 +1,55 @@
 import React from "react";
 import { Hero } from "@/components/home/Hero";
-import { MetricsTrustBar } from "@/components/home/MetricsTrustBar";
-import { AgenticWorkflowSection } from "@/components/home/AgenticWorkflowSection";
-import { EnterprisePlatformShowcase } from "@/components/home/EnterprisePlatformShowcase";
+import { HomeAboutSection } from "@/components/home/HomeAboutSection";
+import { QuickCtaBar } from "@/components/home/QuickCtaBar";
+import { WhatWeDoSection } from "@/components/home/WhatWeDoSection";
+import { VideoBannerSection } from "@/components/home/VideoBannerSection";
 import { IndustriesShowcase } from "@/components/home/IndustriesShowcase";
-import { CollaborationModelsSection } from "@/components/home/CollaborationModelsSection";
-import { FeaturedCaseStudies } from "@/components/home/FeaturedCaseStudies";
+import { TechPracticeExplorer } from "@/components/home/TechPracticeExplorer";
+import { MetricsTrustBar } from "@/components/home/MetricsTrustBar";
+import { AppointmentSection } from "@/components/home/AppointmentSection";
 import { TestimonialSection } from "@/components/home/TestimonialSection";
+import { ItSolutionsBanner } from "@/components/home/ItSolutionsBanner";
 import { TeamMosaic } from "@/components/home/TeamMosaic";
-import { HomeContactSection } from "@/components/home/HomeContactSection";
 
 export default function Home() {
   return (
     <main className="relative bg-white selection:bg-[#FF6B00]/20 selection:text-[#FF6B00]">
-      {/* SECTION 1 — HERO: Editorial typography, luminous gradient mesh, flowing ribbon, live AI dashboard simulation */}
+      {/* 1. HERO: Multi-stop fluid gradient mesh ribbon, original copy & real artwork (ai_baner_v1.png) */}
       <Hero />
 
-      {/* SECTION 2 — TRUST AND CAPABILITIES: Bright background, verified metrics, sector compliance, and creative capabilities showcase */}
-      <MetricsTrustBar />
+      {/* 2. ABOUT: "Have a product idea?" with 6 key points and 2x2 photo collage of actual assets */}
+      <HomeAboutSection />
 
-      {/* SECTION 3 — AUTONOMOUS AI ARCHITECTURE: Light atmospheric background, colorful workflow diagram, interactive connected nodes */}
-      <AgenticWorkflowSection />
+      {/* 3. QUICK CTA: "Are you in a need of developer?" with direct appointment trigger */}
+      <QuickCtaBar />
 
-      {/* SECTION 4 — ENTERPRISE PLATFORM: Asymmetric editorial split layout, large floating dashboard composition, ambient gradient lighting */}
-      <EnterprisePlatformShowcase />
+      {/* 4. WHAT WE DO: Original 3-column asymmetric layout (Product Development, Architect, Power BI, Testing, Cloud) */}
+      <WhatWeDoSection />
 
-      {/* SECTION 5 — INDUSTRY SOLUTIONS: Panoramic visual arrangement, creative bento grid, interactive sector insights */}
+      {/* 5. VIDEO BANNER: Real 10.webp background, pulsing play button & company video lightbox */}
+      <VideoBannerSection />
+
+      {/* 6. INDUSTRIES: "To Whom We Provide Solutions?" covering 8 dedicated sector specializations */}
       <IndustriesShowcase />
 
-      {/* SECTION 6 — COLLABORATION MODELS: Creative split layout with real engineering squad and modernizing visuals */}
-      <CollaborationModelsSection />
+      {/* 7. TECHNOLOGIES: "Technologies @ Qtech — Learn More With Us" interactive practice selector */}
+      <TechPracticeExplorer />
 
-      {/* SECTION 7 — CASE STUDIES: Large real project imagery, asymmetric showcases, actual production outcomes */}
-      <FeaturedCaseStudies />
+      {/* 8. FUN FACTS & TRUST: Verified metrics (200+ Clients, 500+ Projects, 88+ Engineers) */}
+      <MetricsTrustBar />
 
-      {/* VERIFIED CLIENT ENDORSEMENTS: High-trust executive testimonials */}
+      {/* 9. APPOINTMENT: Why Choose Qtech (3 pillars) + book-an-appointment graphic + working form with PDF upload */}
+      <AppointmentSection />
+
+      {/* 10. TESTIMONIALS: Real executive reviews from Stuart Rox, Lorel Parker, Shota Oda, Shin Paul */}
       <TestimonialSection />
 
-      {/* SECTION 8 — TEAM AND ENGINEERING CULTURE: Asymmetric 4-tier mosaic of real engineer headshots and office photography */}
-      <TeamMosaic />
+      {/* 11. IT SOLUTIONS BANNER: "Our IT Solutions will get you on move towards your destination" */}
+      <ItSolutionsBanner />
 
-      {/* SECTION 9 — CONTACT: Luminous gradient composition, direct coordinates, SLA guarantees, and enterprise inquiry suite */}
-      <HomeContactSection />
+      {/* 12. TEAM MOSAIC: "Teamwork is the only way we work" featuring all 88 real staff headshots */}
+      <TeamMosaic />
     </main>
   );
 }

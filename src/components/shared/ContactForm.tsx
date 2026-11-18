@@ -184,7 +184,7 @@ export function ContactForm({
             value={formData.firstName}
             onChange={handleInputChange}
             placeholder="Ada"
-            className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+            className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
           />
         </div>
         <div className="space-y-1.5">
@@ -199,7 +199,7 @@ export function ContactForm({
             value={formData.lastName}
             onChange={handleInputChange}
             placeholder="Lovelace"
-            className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+            className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
           />
         </div>
       </div>
@@ -218,7 +218,7 @@ export function ContactForm({
             value={formData.email}
             onChange={handleInputChange}
             placeholder="ada@enterprise.com"
-            className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+            className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
           />
         </div>
         <div className="space-y-1.5">
@@ -235,7 +235,7 @@ export function ContactForm({
             value={formData.mobile}
             onChange={handleInputChange}
             placeholder="9876543210"
-            className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+            className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
           />
         </div>
       </div>
@@ -250,7 +250,7 @@ export function ContactForm({
           name="type"
           value={formData.type}
           onChange={handleInputChange}
-          className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+          className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-black focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
         >
           <option value="Had a Product Idea?">Had a Product Idea? (Architecture & MVP)</option>
           <option value="Work with us">Work with us (Enterprise Partnership)</option>
@@ -273,7 +273,7 @@ export function ContactForm({
           value={formData.message}
           onChange={handleInputChange}
           placeholder="Describe your tech stack, project timeline, or specific engineering requirements..."
-          className="w-full rounded-lg border border-white/10 bg-[#171B26] px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
+          className="w-full rounded-lg border border-white/10 bg-gray-100 px-3.5 py-2.5 text-sm text-[#F8FAFC] placeholder-[#475569] focus:border-[#FF6B00] focus:outline-none focus:ring-1 focus:ring-[#FF6B00]"
         />
       </div>
 
@@ -297,11 +297,10 @@ export function ContactForm({
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`flex flex-col items-center justify-center p-6 rounded-xl border border-dashed transition-all cursor-pointer group ${
-              isDragging
-                ? "border-[#FF6B00] bg-[#FF6B00]/10"
-                : "border-white/15 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#FF6B00]/50"
-            }`}
+            className={`flex flex-col items-center justify-center p-6 rounded-xl border border-dashed transition-all cursor-pointer group ${isDragging
+              ? "border-[#FF6B00] bg-[#FF6B00]/10"
+              : "border-white/15 bg-white/[0.01] hover:bg-white/[0.03] hover:border-[#FF6B00]/50"
+              }`}
           >
             <Upload className="h-6 w-6 text-[#94A3B8] group-hover:text-[#FF6B00] transition-colors mb-2" />
             <span className="text-xs font-medium text-[#F8FAFC]">
@@ -335,11 +334,10 @@ export function ContactForm({
       {/* Feedback Alert */}
       {statusMessage && (
         <div
-          className={`p-3.5 rounded-lg border text-xs flex items-center gap-2 transition-all ${
-            status === "success"
-              ? "bg-[#10B981]/10 border-[#10B981]/30 text-[#10B981]"
-              : "bg-[#EF4444]/10 border-[#EF4444]/30 text-[#EF4444]"
-          }`}
+          className={`p-3.5 rounded-lg border text-xs flex items-center gap-2 transition-all ${status === "success"
+            ? "bg-[#10B981]/10 border-[#10B981]/30 text-[#10B981]"
+            : "bg-[#EF4444]/10 border-[#EF4444]/30 text-[#EF4444]"
+            }`}
         >
           {status === "success" ? (
             <CheckCircle2 className="h-4 w-4 shrink-0" />

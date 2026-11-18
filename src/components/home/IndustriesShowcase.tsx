@@ -181,7 +181,7 @@ export function IndustriesShowcase() {
   const smallIndustries = industries.filter((i) => !i.large);
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden" style={{ background: "linear-gradient(180deg, #F0F7FF 0%, #FAFCFF 50%, #FFFFFF 100%)" }}>
+    <section id="homepage-industries" className="relative py-24 sm:py-32 overflow-hidden scroll-mt-20" style={{ background: "linear-gradient(180deg, #F0F7FF 0%, #FAFCFF 50%, #FFFFFF 100%)" }}>
       {/* Ambient background glows */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30" style={{ background: "radial-gradient(circle, #BAE6FD 0%, transparent 70%)" }} />
@@ -190,14 +190,19 @@ export function IndustriesShowcase() {
 
       <Container size="lg">
         {/* Section Header */}
-        <div className="text-center space-y-5 max-w-3xl mx-auto mb-16">
-          {/* <Badge variant="amber" size="sm">Industry-Tailored Excellence</Badge> */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display tracking-tight" style={{ color: "#0F172A" }}>
-            Built for the Industries<br />
-            <span style={{ color: "#FF6B00" }}>That Matter</span>
+        <div className="text-center space-y-4 max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-display tracking-tight text-slate-900">
+            To Whom We Provide{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#FF5A36]">
+              Solutions ?
+            </span>
           </h2>
-          <p className="text-base sm:text-lg leading-relaxed" style={{ color: "#334155" }}>
-            Our specialized engineering squads cater to diverse industries, empowering organizations to thrive with domain-specific compliance and technological rigor.
+          <h3 className="text-2xl font-semibold text-slate-800 font-display">
+            Industry-Tailored <strong className="text-slate-900 font-bold">Excellence</strong>
+          </h3>
+          <p className="text-base sm:text-lg leading-relaxed text-slate-600">
+            At Qrious Tech Team LLP, our innovative solutions cater to a diverse range of industries,
+            empowering organizations to thrive in the digital landscape.
           </p>
         </div>
 

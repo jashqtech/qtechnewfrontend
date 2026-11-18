@@ -111,12 +111,9 @@ export async function GET() {
       try {
         const json = JSON.parse(text);
         if (json && Array.isArray(json.data) && json.data.length > 0) {
-          return NextResponse.json({
-            status: "success",
-            source: "upstream",
-            count: json.data.length,
-            data: json.data,
-          });
+          return NextResponse.json(json.data);
+        } else if (Array.isArray(json) && json.length > 0) {
+          return NextResponse.json(json);
         }
       } catch {
         console.warn("Upstream jobs returned non-JSON, falling back to cached practice jobs.");
@@ -128,10 +125,5 @@ export async function GET() {
   }
 
   // Graceful fallback to verified practice jobs when upstream is offline or unreachable
-  return NextResponse.json({
-    status: "success",
-    source: "fallback",
-    count: FALLBACK_JOBS.length,
-    data: FALLBACK_JOBS,
-  });
+  return NextResponse.json(FALLBACK_JOBS);
 }

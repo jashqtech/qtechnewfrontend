@@ -31,11 +31,20 @@ export default function CrewPage() {
       try {
         const res = await fetch("/api/jobs");
         if (res.ok) {
-          const data = await res.json();
-          setJobs(data);
+          const json = await res.json();
+          if (Array.isArray(json)) {
+            setJobs(json);
+          } else if (json && Array.isArray(json.data)) {
+            setJobs(json.data);
+          } else {
+            setJobs([]);
+          }
+        } else {
+          setJobs([]);
         }
       } catch (err) {
         console.error("Failed to load jobs", err);
+        setJobs([]);
       } finally {
         setLoading(false);
       }
@@ -112,19 +121,19 @@ export default function CrewPage() {
                 Open Engineering Roles
               </h2>
             </div>
-            <p className="text-sm text-slate-500 mt-2 md:mt-0 font-mono">
+            {/* <p className="text-sm text-slate-500 mt-2 md:mt-0 font-mono">
               Direct resume dispatch to:{" "}
               <a href="mailto:hr@qrioustech.in" className="text-[#FF6B00] underline">
                 hr@qrioustech.in
               </a>
-            </p>
+            </p> */}
           </div>
 
           {loading ? (
             <div className="p-12 text-center text-slate-500 font-mono">
               Loading active positions...
             </div>
-          ) : jobs.length === 0 ? (
+          ) : !Array.isArray(jobs) || jobs.length === 0 ? (
             <div className="p-12 text-center rounded-2xl bg-white border border-slate-200 text-slate-600">
               No active openings at the moment. Please send your speculative CV to{" "}
               <strong className="text-slate-900">hr@qrioustech.in</strong>.
@@ -187,9 +196,8 @@ export default function CrewPage() {
                           Apply Now
                         </Button>
                         <ChevronDown
-                          className={`h-5 w-5 text-slate-400 transition-transform ${
-                            isExpanded ? "rotate-180" : ""
-                          }`}
+                          className={`h-5 w-5 text-slate-400 transition-transform ${isExpanded ? "rotate-180" : ""
+                            }`}
                         />
                       </div>
                     </div>

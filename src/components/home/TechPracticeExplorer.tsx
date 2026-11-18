@@ -100,23 +100,27 @@ export function TechPracticeExplorer() {
   const activePractice = practices.find((p) => p.id === activePracticeId) || practices[0];
 
   return (
-    <section className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#F0F7FF] border-b border-slate-200/80">
+    <section id="technologies-at-qtech" className="relative py-24 sm:py-32 overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#FAF8F5] to-[#F0F7FF] border-b border-slate-200/80 scroll-mt-20">
       {/* Ambient background glows */}
       <div className="absolute top-1/3 right-10 w-[500px] h-[350px] bg-gradient-to-bl from-[#06B6D4]/10 via-[#6366F1]/5 to-transparent blur-[85px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-[450px] h-[300px] bg-gradient-to-tr from-[#FF6B00]/8 to-transparent blur-[75px] pointer-events-none" />
 
       <Container size="lg" className="relative z-10">
         {/* Section Header */}
-        <div className="space-y-4 max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-50 border border-cyan-200 text-xs font-mono font-semibold text-[#06B6D4]">
-            <Layers className="h-3.5 w-3.5" />
-            <span>Technologies @ QTech</span>
-          </div>
+        <div className="text-center space-y-4 max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 font-display tracking-tight">
-            Enterprise Technology Stacks
+            Technologies{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B00] to-[#FF5A36]">
+              @ Qtech
+            </span>
           </h2>
+          <h3 className="text-2xl font-semibold text-slate-800 font-display">
+            Learn More <strong className="text-slate-900 font-bold">With Us</strong>
+          </h3>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            Explore the specialized programming languages, frameworks, and cloud systems our senior engineers leverage across production deployments.
+            &ldquo;Learn More With Us&rdquo; serves as an invitation to explore further information about
+            the technologies discussed in the &ldquo;Technologies @ Qtech&rdquo; section, directing readers to delve
+            deeper into the specialized practices provided by Qtech.
           </p>
         </div>
 
